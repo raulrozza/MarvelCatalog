@@ -14,7 +14,7 @@ const App: React.FC = () => {
   return (
     <Theme>
       <BrowserRouter>
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<Loading />}>
           <Routes />
         </Suspense>
       </BrowserRouter>
