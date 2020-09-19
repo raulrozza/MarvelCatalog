@@ -8,6 +8,10 @@ export default createGlobalStyle`
       box-sizing: border-box;
     }
 
+    :root {
+      font-size: 60%;
+    }
+
     body,
     html,
     #root {
@@ -19,13 +23,15 @@ export default createGlobalStyle`
     input,
     textarea,
     button {
-      font-family: 'Roboto', sans-serif;
+      font: 300 1.6rem 'Noto Sans JP', sans-serif;
       color: ${theme.colors.textWhite};
     }
 
     a {
-      color: ${theme.colors.boldText};
       transition: color 0.2s;
+      color: ${theme.colors.textWhite};
+
+      text-decoration: none;
 
       &:hover {
         color: ${theme.colors.textSelected};
@@ -38,7 +44,7 @@ export default createGlobalStyle`
     h4,
     h5,
     h6 {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Roboto Condensed', sans-serif;
     }
   `}
 `;
