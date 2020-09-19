@@ -11,6 +11,9 @@ import Theme from './contexts/Theme';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+// CSS
+import 'react-toastify/dist/ReactToastify.min.css';
+
 const App: React.FC = () => {
   return (
     <Theme>

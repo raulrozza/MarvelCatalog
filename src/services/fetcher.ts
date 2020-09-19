@@ -39,6 +39,7 @@ export function useFetcher<T = unknown>(URL: string): IFetchedData<T> {
         setData(data => [...data, ...metadata.results]);
       } catch (error) {
         handleErrors(error);
+        setCanFetch(false);
       } finally {
         setLoading(false);
       }
