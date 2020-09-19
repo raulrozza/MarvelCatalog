@@ -12,6 +12,18 @@ export const Container = styled.div`
   grid-template-areas: 'title' 'thumb';
   grid-template-rows: 8rem 25rem;
   place-items: center;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundHighlighted};
+
+    img {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export const Title = styled.strong`
@@ -26,4 +38,8 @@ export const Title = styled.strong`
 
 export const Thumb = styled.picture`
   grid-area: thumb;
+
+  img {
+    transition: transform 0.2s;
+  }
 `;
