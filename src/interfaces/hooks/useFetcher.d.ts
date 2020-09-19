@@ -1,7 +1,9 @@
 import { IMetadata } from '../api/DataWrappers';
 
 export interface IFetchedData<T> {
-  data: T | null;
+  data: T[];
   meta: IMetadata;
   loading: boolean;
+  canFetch: boolean;
+  fetchNext: () => void;
 }

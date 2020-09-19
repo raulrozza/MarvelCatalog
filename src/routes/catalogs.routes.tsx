@@ -14,9 +14,9 @@ const CatalogRoutes: React.FC = () => {
     <>
       <Navbar />
       <Switch>
-        <Route path="/" exact component={Main} />
+        <Route path="/novels" exact component={Main} />
         <Route path="*" exact>
-          <Redirect to="/" />
+          <Redirect to="/novels" />
         </Route>
       </Switch>
     </>

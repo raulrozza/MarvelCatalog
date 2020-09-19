@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <ul className="links-container">
-        <Navlink to="/">Novels</Navlink>
+        <Navlink to="/novels">Novels</Navlink>
       </ul>
     </Container>
   );
