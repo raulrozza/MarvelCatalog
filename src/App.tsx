@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
-import api from './services/api';
+import React from 'react';
+
+// Contexts
+import Theme from './contexts/Theme';
+
+// Pages
+import Main from './pages/Main';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    api
-      .get('comics')
-      .then(response => console.log(response.data))
-      .catch(error => console.error(error, error.response.data));
-  }, []);
-
-  return <div className="App">opa</div>;
+  return (
+    <Theme>
+      <Main />
+    </Theme>
+  );
 };
 
 export default App;
