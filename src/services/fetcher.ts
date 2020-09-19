@@ -7,6 +7,9 @@ import api from './api';
 import { IFetchedData } from '../interfaces/hooks/useFetcher';
 import { IMetadata, IResponseWrapper } from '../interfaces/api/DataWrappers';
 
+// Utils
+import handleErrors from '../utils/handleErrors';
+
 export function useFetcher<T = unknown[]>(URL: string): IFetchedData<T> {
   const [data, setData] = useState<T | null>(null);
   const [meta, setMeta] = useState<IMetadata>({} as IMetadata);
@@ -27,7 +30,7 @@ export function useFetcher<T = unknown[]>(URL: string): IFetchedData<T> {
 
       setData(metadata.results);
     } catch (error) {
-      console.error(error);
+      handleErrors(error);
     } finally {
       setLoading(false);
     }

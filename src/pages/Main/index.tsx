@@ -5,28 +5,32 @@ import { Helmet } from 'react-helmet';
 import Loading from '../../components/Loading';
 import { useFetcher } from '../../services/fetcher';
 
-// import { Container } from './styles';
+// Styles
+import { Container } from './styles';
+
+// Types
+import { IComic } from '../../interfaces/api/Comics';
+import ComicCard from './ComicCard';
 
 const Main: React.FC = () => {
-  const { loading, data } = useFetcher<{ id: number }[]>('comics');
+  const { loading, data } = useFetcher<IComic[]>('comics');
+
   return (
-    <div>
+    <Container>
       <Helmet>
         <title>Quadrinhos - Marvel Catalog</title>
       </Helmet>
+
       {loading ? (
         <Loading />
       ) : (
-        <ul>
-          {data?.map((value, index) => (
-            <li key={index}>
-              {JSON.stringify(value, null, 2)}
-              <br />
-            </li>
+        <div className="catalog-container">
+          {data?.map(comic => (
+            <ComicCard key={comic.id} comic={comic} />
           ))}
-        </ul>
+        </div>
       )}
-    </div>
+    </Container>
   );
 };
 
