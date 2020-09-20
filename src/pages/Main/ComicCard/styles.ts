@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ComicImage from '../../../components/ComicImage';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundSmooth};
@@ -43,7 +44,7 @@ export const Title = styled.strong`
   text-overflow: ellipsis;
 `;
 
-export const Thumb = styled.picture`
+export const Thumb = styled(ComicImage)`
   grid-area: thumb;
 
   img {

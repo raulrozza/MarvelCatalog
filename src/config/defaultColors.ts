@@ -6,6 +6,7 @@ export default {
   primary: '#F0141E',
   text: '#5C5C5C',
   textWhite: '#FFF',
+  textLightWhite: '#ECECEC',
   boldText: '#000',
   textSelected: '#F0141E',
 };

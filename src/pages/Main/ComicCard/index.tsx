@@ -1,7 +1,4 @@
-import React, { useMemo } from 'react';
-
-// Assets
-import comicPlaceholder from '../../../assets/img/placeholders/comic.jpg';
+import React from 'react';
 
 // Hooks
 import { useHistory } from 'react-router-dom';
@@ -11,14 +8,8 @@ import { Container, Footer, Thumb, Title } from './styles';
 
 // Types
 import { ComicCardProps } from '../types';
-import getImageURL from '../../../utils/getImageURL';
 
 const ComicCard: React.FC<ComicCardProps> = ({ comic }) => {
-  const thumbnailURL = useMemo(() => {
-    const { thumbnail } = comic;
-
-    return getImageURL(thumbnail.path, thumbnail.extension, 'lg');
-  }, [comic]);
   const { push } = useHistory();
 
   const handleNavigate = () => {
@@ -28,10 +19,7 @@ const ComicCard: React.FC<ComicCardProps> = ({ comic }) => {
   return (
     <Container onClick={handleNavigate}>
       <Title>{comic.title}</Title>
-      <Thumb>
-        <source srcSet={thumbnailURL} />
-        <img src={comicPlaceholder} alt={comic.title} />
-      </Thumb>
+      <Thumb thumbnail={comic.thumbnail} alt={comic.title} size="lg" />
       <Footer>Ver detalhes</Footer>
     </Container>
   );
