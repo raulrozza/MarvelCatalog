@@ -4,6 +4,7 @@ export default {
   backgroundHighlighted: '#5C5C5C',
   black: '#000',
   primary: '#F0141E',
+  primaryTransparent: '#F0141EAA',
   text: '#5C5C5C',
   textWhite: '#FFF',
   textLightWhite: '#ECECEC',

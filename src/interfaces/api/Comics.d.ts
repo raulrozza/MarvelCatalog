@@ -1,12 +1,12 @@
-import { ICollection, ICreators, IImage, ISeries } from './Generals';
+import { ICreators, IImage, IResource } from './Generals';
 
 export interface IComic {
   id: number;
   title: string;
   description?: string;
   variantDescription?: string;
-  collections: ICollection[];
-  series?: ISeries;
+  collections: IResource[];
+  series?: IResource;
   pageCount: number;
   thumbnail: IImage;
   images: IImage[];

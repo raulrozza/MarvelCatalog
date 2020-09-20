@@ -24,6 +24,7 @@ import {
 // Types
 import { IComic } from '../../interfaces/api/Comics';
 import { IDParams } from '../../interfaces/routes/params';
+import CharactersList from './CharactersList';
 
 const NovelDetails: React.FC = () => {
   const { id } = useParams<IDParams>();
@@ -59,7 +60,9 @@ const NovelDetails: React.FC = () => {
       <Info>
         {(comic.description || comic.variantDescription) && (
           <DescriptionBlock>
-            <cite>{comic.description}</cite>
+            <cite
+              dangerouslySetInnerHTML={{ __html: comic.description || '' }}
+            />
             <cite>{comic.variantDescription}</cite>
           </DescriptionBlock>
         )}
@@ -84,7 +87,7 @@ const NovelDetails: React.FC = () => {
           </ItemGroup>
         )}
 
-        <section className="characters">Nenhum personagem ainda</section>
+        <CharactersList sourceId={id} />
       </Info>
     </Container>
   );

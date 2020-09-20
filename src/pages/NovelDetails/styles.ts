@@ -11,7 +11,7 @@ export const Container = styled.main`
 
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 8rem 2fr 1fr;
+  grid-template-rows: 10.8rem 48rem 1fr;
   grid-template-areas:
     'title info'
     'picture info'
@@ -21,6 +21,7 @@ export const Container = styled.main`
 
 export const Title = styled.h1`
   grid-area: title;
+  text-align: center;
 `;
 
 export const Thumb = styled(ComicImage)`
@@ -79,6 +80,8 @@ export const Info = styled.section`
   align-items: center;
 
   padding: 1.6rem;
+
+  width: 100%;
 `;
 
 export const DescriptionBlock = styled.section`

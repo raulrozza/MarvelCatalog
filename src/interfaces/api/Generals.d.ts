@@ -1,26 +1,28 @@
 interface ICreator {
   resourceURI: string;
   name: string;
-  role: penciler;
+  role: string;
 }
 
 export interface ICreators {
-  available: integer;
+  available: number;
   collectionURI: string;
   items: ICreator[];
 }
 
-export interface ICollection {
+export interface IResource {
   resourceURI: string;
   name: string;
+}
+
+export interface IResourceList {
+  available: number;
+  returned: number;
+  collectionURI: number;
+  items: IResource[];
 }
 
 export interface IImage {
   path: string;
   extension: string;
-}
-
-export interface ISeries {
-  resourceURI: string;
-  name: string;
 }
