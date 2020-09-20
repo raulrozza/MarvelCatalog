@@ -59,6 +59,9 @@ export const Footer = styled.footer`
 
   padding: 1.6rem;
 
+  font: 300 1.4rem ${({ theme }) => theme.fonts.special};
+  text-align: right;
+
   background-color: #0009;
 
   transition: bottom 0.2s;

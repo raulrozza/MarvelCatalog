@@ -3,6 +3,9 @@ import React, { useMemo } from 'react';
 // Assets
 import comicPlaceholder from '../../../assets/img/placeholders/comic.jpg';
 
+// Hooks
+import { useHistory } from 'react-router-dom';
+
 // Styles
 import { Container, Footer, Thumb, Title } from './styles';
 
@@ -16,9 +19,14 @@ const ComicCard: React.FC<ComicCardProps> = ({ comic }) => {
 
     return getImageURL(thumbnail.path, thumbnail.extension, 'lg');
   }, [comic]);
+  const { push } = useHistory();
+
+  const handleNavigate = () => {
+    push(`/novels/${comic.id}`);
+  };
 
   return (
-    <Container>
+    <Container onClick={handleNavigate}>
       <Title>{comic.title}</Title>
       <Thumb>
         <source srcSet={thumbnailURL} />

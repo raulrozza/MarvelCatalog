@@ -1,10 +1,12 @@
 import React from 'react';
 
+// Components
+import PageTitle from '../../components/PageTitle';
+
 // Hooks
 import { useFetcher } from '../../services/fetcher';
 
 // Libs
-import { Helmet } from 'react-helmet';
 import Loading from '../../components/Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -20,9 +22,7 @@ const Main: React.FC = () => {
 
   return (
     <Container>
-      <Helmet>
-        <title>Novels - Marvel Catalog</title>
-      </Helmet>
+      <PageTitle title="Novels" />
 
       {loading ? (
         <Loading />

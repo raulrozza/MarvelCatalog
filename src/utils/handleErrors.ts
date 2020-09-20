@@ -3,5 +3,5 @@ import { toast } from 'react-toastify';
 export default function (error: Error): void {
   console.error(error);
 
-  toast.error('Houve um problema ao obter os dados');
+  toast.error('There was a problem fetching the data.');
 }
