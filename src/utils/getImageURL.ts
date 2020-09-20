@@ -5,5 +5,7 @@ export default function (
   extension: string,
   size: keyof typeof portrait,
 ): string {
-  return `${path}/${portrait[size]}.${extension}`;
+  const httpsURL = path.replace(/http:\/\//, 'https://');
+
+  return `${httpsURL}/${portrait[size]}.${extension}`;
 }

@@ -32,10 +32,10 @@ export const TextLogo = styled.div`
 
   color: ${({ theme }) => theme.colors.textWhite};
 
-  font: 700 3.2rem 'Roboto Condensed', sans-serif;
+  font: 700 3.2rem ${({ theme }) => theme.fonts.special};
 `;
 
 export const Navlink = styled(Link)`
-  font: 700 1.6rem 'Roboto Condensed', sans-serif;
+  font: 700 1.6rem ${({ theme }) => theme.fonts.special};
   text-transform: uppercase;
 `;

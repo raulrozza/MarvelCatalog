@@ -23,7 +23,7 @@ export default createGlobalStyle`
     input,
     textarea,
     button {
-      font: 300 1.6rem 'Noto Sans JP', sans-serif;
+      font: 300 1.6rem ${theme.fonts.default};
       color: ${theme.colors.textWhite};
     }
 
@@ -44,7 +44,7 @@ export default createGlobalStyle`
     h4,
     h5,
     h6 {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: ${theme.fonts.special};
     }
   `}
 `;

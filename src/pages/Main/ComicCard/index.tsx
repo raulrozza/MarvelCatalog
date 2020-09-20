@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import comicPlaceholder from '../../../assets/img/placeholders/comic.jpg';
 
 // Styles
-import { Container, Thumb, Title } from './styles';
+import { Container, Footer, Thumb, Title } from './styles';
 
 // Types
 import { ComicCardProps } from '../types';
@@ -24,6 +24,7 @@ const ComicCard: React.FC<ComicCardProps> = ({ comic }) => {
         <source srcSet={thumbnailURL} />
         <img src={comicPlaceholder} alt={comic.title} />
       </Thumb>
+      <Footer>Ver detalhes</Footer>
     </Container>
   );
 };

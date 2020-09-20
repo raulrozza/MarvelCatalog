@@ -21,7 +21,7 @@ const Main: React.FC = () => {
   return (
     <Container>
       <Helmet>
-        <title>Quadrinhos - Marvel Catalog</title>
+        <title>Novels - Marvel Catalog</title>
       </Helmet>
 
       {loading ? (

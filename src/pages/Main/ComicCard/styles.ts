@@ -7,6 +7,9 @@ export const Container = styled.div`
   border-radius: 0.4rem;
 
   padding: 1.6rem;
+  position: relative;
+
+  overflow: hidden;
 
   display: grid;
   grid-template-areas: 'title' 'thumb';
@@ -23,13 +26,17 @@ export const Container = styled.div`
     img {
       transform: scale(1.1);
     }
+
+    footer {
+      bottom: 0;
+    }
   }
 `;
 
 export const Title = styled.strong`
   grid-area: title;
 
-  font: 700 1.8rem 'Roboto Condensed', sans-serif;
+  font: 700 1.8rem ${({ theme }) => theme.fonts.special};
 
   text-align: center;
 
@@ -42,4 +49,17 @@ export const Thumb = styled.picture`
   img {
     transition: transform 0.2s;
   }
+`;
+
+export const Footer = styled.footer`
+  position: absolute;
+  bottom: -10rem;
+  left: 0;
+  right: 0;
+
+  padding: 1.6rem;
+
+  background-color: #0009;
+
+  transition: bottom 0.2s;
 `;
