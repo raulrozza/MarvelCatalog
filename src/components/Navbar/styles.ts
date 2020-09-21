@@ -29,7 +29,7 @@ export const Container = styled.nav<NavbarContainerProps>`
     display: none;
   }
 
-  @media (max-width: 578px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     .menu-toggle {
       display: block;
 
@@ -85,7 +85,7 @@ export const TextLogo = styled.div`
 
   font: 700 3.2rem ${({ theme }) => theme.fonts.special};
 
-  @media (max-width: 578px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;
@@ -96,7 +96,7 @@ export const Navlink = styled(Link)`
 
   margin: 0 0.8rem;
 
-  @media (max-width: 578px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 2.4rem;
     margin: 0.8rem;
   }

@@ -32,6 +32,14 @@ export const Container = styled.div`
       bottom: 0;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-rows: 6rem 18rem;
+
+    img {
+      height: 18rem;
+    }
+  }
 `;
 
 export const Title = styled.strong`
@@ -42,6 +50,10 @@ export const Title = styled.strong`
   text-align: center;
 
   text-overflow: ellipsis;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Thumb = styled(ComicImage)`

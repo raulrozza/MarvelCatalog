@@ -1,6 +1,7 @@
 import React from 'react';
 
 // Config
+import defaultBreakpoints from '../config/defaultBreakpoints';
 import defaultColors from '../config/defaultColors';
 import defaultFonts from '../config/defaultFonts';
 
@@ -11,6 +12,7 @@ import Global from '../styles/Global';
 const theme = {
   colors: defaultColors,
   fonts: defaultFonts,
+  breakpoints: defaultBreakpoints,
 };
 
 const Theme: React.FC = ({ children }) => {
