@@ -4,25 +4,32 @@ import { useCallback, useEffect, useState } from 'react';
 import api from './api';
 
 // Types
-import { IFetchedData } from '../interfaces/hooks/useFetcher';
+import { IFetchedData, IFetcherOptions } from '../interfaces/hooks/useFetcher';
 import { IMetadata, IResponseWrapper } from '../interfaces/api/DataWrappers';
 
 // Utils
 import handleErrors from '../utils/handleErrors';
 
-export function useFetcher<T = unknown>(URL: string): IFetchedData<T> {
+export function useFetcher<T = unknown>(
+  URL: string,
+  options: IFetcherOptions = {},
+): IFetchedData<T> {
   const [data, setData] = useState<T[]>([]);
   const [meta, setMeta] = useState<IMetadata>({} as IMetadata);
   const [loading, setLoading] = useState(true);
   const [canFetch, setCanFetch] = useState(true);
+  const [fetchingOptions] = useState(options);
 
   const fetch = useCallback(
     async (offset = 0) => {
       try {
+        const params = {
+          offset,
+          ...fetchingOptions,
+        };
+
         const response = await api.get<IResponseWrapper<T[]>>(URL, {
-          params: {
-            offset,
-          },
+          params,
         });
 
         const metadata = response.data.data;
@@ -44,7 +51,7 @@ export function useFetcher<T = unknown>(URL: string): IFetchedData<T> {
         setLoading(false);
       }
     },
-    [URL],
+    [URL, fetchingOptions],
   );
 
   const fetchNext = () => {

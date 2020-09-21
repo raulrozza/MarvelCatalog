@@ -38,4 +38,6 @@ export const TextLogo = styled.div`
 export const Navlink = styled(Link)`
   font: 700 1.6rem ${({ theme }) => theme.fonts.special};
   text-transform: uppercase;
+
+  margin: 0 0.8rem;
 `;

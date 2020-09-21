@@ -7,3 +7,7 @@ export interface IFetchedData<T> {
   canFetch: boolean;
   fetchNext: () => void;
 }
+
+export interface IFetcherOptions {
+  limit?: number;
+}
