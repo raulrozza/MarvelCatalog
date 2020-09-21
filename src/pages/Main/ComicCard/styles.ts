@@ -36,6 +36,8 @@ export const Container = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-rows: 6rem 18rem;
 
+    padding: 0.8rem;
+
     img {
       height: 18rem;
     }

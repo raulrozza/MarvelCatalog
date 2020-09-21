@@ -17,11 +17,42 @@ export const Container = styled.main`
     'picture info'
     'creators info';
   place-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-areas:
+      'picture title creators'
+      'info info info';
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 24rem 1fr;
+
+    > picture img {
+      height: 20rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin: 0.8rem;
+    padding: 0.8rem;
+
+    grid-template-areas:
+      'title'
+      'picture'
+      'info'
+      'creators';
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 4rem 24rem 2fr 1fr;
+  }
 `;
 
 export const Title = styled.h1`
   grid-area: title;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: 2rem;
+  }
 `;
 
 export const Thumb = styled(ComicImage)`
@@ -63,10 +94,15 @@ export const CreatorsList = styled.section`
 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     cite {
       text-transform: capitalize;
     }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    align-self: center;
   }
 `;
 
@@ -82,6 +118,10 @@ export const Info = styled.section`
   padding: 1.6rem;
 
   width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.4rem 0;
+  }
 `;
 
 export const DescriptionBlock = styled.section`
