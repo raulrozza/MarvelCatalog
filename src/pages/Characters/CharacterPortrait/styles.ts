@@ -38,6 +38,30 @@ export const Container = styled.div`
       max-height: 10rem;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.8rem;
+
+    width: 6.2rem;
+
+    img {
+      width: 5.4rem;
+      height: 5.4rem;
+    }
+
+    footer {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      width: 6.6rem;
+
+      img {
+        width: 5.8rem;
+        height: 5.8rem;
+      }
+    }
+  }
 `;
 
 export const Footer = styled.footer`

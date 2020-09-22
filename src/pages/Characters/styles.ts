@@ -16,4 +16,20 @@ export const Container = styled.main`
 
     background-color: ${({ theme }) => theme.colors.black};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xlg}) {
+    padding: 0 2rem;
+
+    .character-list {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    .character-list {
+      padding: 0.8rem;
+
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 `;
