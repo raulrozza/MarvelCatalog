@@ -28,13 +28,28 @@ export const Container = styled.section`
     width: 100%;
     max-height: 43.2rem;
 
-    overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: thin;
 
     display: grid;
     gap: 0.8rem;
     grid-template-columns: repeat(8, 1fr);
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.8rem;
+
+    .list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    strong {
+      font-size: 1.8rem;
+    }
   }
 `;
 
@@ -86,6 +101,16 @@ export const CharacterBox = styled(Link)`
 
     .name {
       visibility: visible;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 8rem;
+    height: 8rem;
+
+    img {
+      width: 8rem;
+      height: 8rem;
     }
   }
 `;

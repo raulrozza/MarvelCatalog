@@ -42,7 +42,7 @@ export const Container = styled.main`
       'creators';
 
     grid-template-columns: 1fr;
-    grid-template-rows: 4rem 24rem 2fr 1fr;
+    grid-template-rows: 4rem 24rem 1fr 1fr;
   }
 `;
 
@@ -121,6 +121,8 @@ export const Info = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: 0.4rem 0;
+
+    overflow: hidden;
   }
 `;
 
@@ -160,4 +162,10 @@ export const ListItem = styled.div`
   margin: 0.4rem;
 
   border-radius: 0.4rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.4rem;
+
+    padding: 0.4rem;
+  }
 `;
