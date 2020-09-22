@@ -1,8 +1,11 @@
 import React from 'react';
 
 // Components
-import Loading from '../../components/Loading';
+import CharacterImage from '../../components/CharacterImage';
+import ComicsList from './ComicsList';
 import DataNotFound from '../../components/DataNotFound';
+import Loading from '../../components/Loading';
+import PageTitle from '../../components/PageTitle';
 
 // Hooks
 import { useFetcher } from '../../services/fetcher';
@@ -14,7 +17,6 @@ import { Bio, Container } from './styles';
 // Types
 import { IDParams } from '../../interfaces/routes/params';
 import { ICharacter } from '../../interfaces/api/Characters';
-import CharacterImage from '../../components/CharacterImage';
 
 const CharacterBio: React.FC = () => {
   const { id } = useParams<IDParams>();
@@ -29,15 +31,20 @@ const CharacterBio: React.FC = () => {
 
   return (
     <Container>
+      <PageTitle title={character.name} />
       <Bio>
         <CharacterImage
           thumbnail={character.thumbnail}
           alt={character.name}
           size="lg"
         />
+
         <h1>{character.name}</h1>
+
         <span>{character.description}</span>
       </Bio>
+
+      <ComicsList sourceId={id} />
     </Container>
   );
 };

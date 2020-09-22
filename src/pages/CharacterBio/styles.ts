@@ -18,6 +18,12 @@ export const Section = styled.section`
   max-width: 56rem;
 
   background-color: ${({ theme }) => theme.colors.backgroundHighlighted};
+
+  strong.title {
+    font: 700 1.8rem ${({ theme }) => theme.fonts.special};
+    color: ${({ theme }) => theme.colors.textLightWhite};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.textLightWhite};
+  }
 `;
 
 export const Bio = styled(Section)`
