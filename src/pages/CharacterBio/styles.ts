@@ -58,4 +58,21 @@ export const Bio = styled(Section)`
     justify-self: center;
     text-align: center;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'picture name'
+      'description description';
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    h1 {
+      align-self: center;
+    }
+  }
 `;
