@@ -63,6 +63,8 @@ export const Container = styled.nav<NavbarContainerProps>`
       flex-direction: column;
       align-items: flex-start;
 
+      overflow: hidden;
+
       z-index: 10;
 
       padding: 0;

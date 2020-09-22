@@ -22,8 +22,12 @@ const Navbar: React.FC = () => {
       </div>
 
       <ul className="links-container">
-        <Navlink to="/novels">Novels</Navlink>
-        <Navlink to="/characters">Characters</Navlink>
+        <Navlink to="/novels" onClick={() => setMenuToggle(false)}>
+          Novels
+        </Navlink>
+        <Navlink to="/characters" onClick={() => setMenuToggle(false)}>
+          Characters
+        </Navlink>
       </ul>
       <div className="menu-toggle">
         <FaBars onClick={toggleMenu} />
