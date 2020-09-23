@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 
-// Componetes
+// Components
 import Loading from './components/Loading';
+import { RecoilRoot } from 'recoil';
 import Routes from './routes/index.routes';
 
 // Contexts
@@ -17,11 +18,13 @@ import 'react-toastify/dist/ReactToastify.min.css';
 const App: React.FC = () => {
   return (
     <Theme>
-      <BrowserRouter>
-        <Suspense fallback={<Loading />}>
-          <Routes />
-        </Suspense>
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <Suspense fallback={<Loading />}>
+            <Routes />
+          </Suspense>
+        </BrowserRouter>
+      </RecoilRoot>
 
       <ToastContainer pauseOnHover={false} />
     </Theme>
