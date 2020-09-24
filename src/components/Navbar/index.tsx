@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 // Assets
 import marvelLogo from '../../assets/img/marvel_logo.png';
@@ -12,13 +12,23 @@ import { FaBars } from 'react-icons/fa';
 // Libs
 import { Link } from 'react-router-dom';
 
+// Recoil
+import { useSetRecoilState } from 'recoil';
+import filter from '../../atoms/filter';
+
 // Styles
 import { Container, Logo, Navlink, TextLogo } from './styles';
 
 const Navbar: React.FC = () => {
   const [menuToggle, setMenuToggle] = useState(false);
+  const setFilters = useSetRecoilState(filter);
 
   const toggleMenu = () => setMenuToggle(toggle => !toggle);
+
+  const handleOnNavigate = useCallback(() => {
+    setMenuToggle(false);
+    setFilters('');
+  }, [setFilters]);
 
   return (
     <Container showMenu={menuToggle}>
@@ -31,11 +41,11 @@ const Navbar: React.FC = () => {
       <ul className="links-container">
         <SearchBar />
 
-        <Navlink to="/novels" onClick={() => setMenuToggle(false)}>
+        <Navlink to="/novels" onClick={handleOnNavigate}>
           Novels
         </Navlink>
 
-        <Navlink to="/characters" onClick={() => setMenuToggle(false)}>
+        <Navlink to="/characters" onClick={handleOnNavigate}>
           Characters
         </Navlink>
       </ul>

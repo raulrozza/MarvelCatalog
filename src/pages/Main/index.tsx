@@ -28,7 +28,7 @@ const Main: React.FC = () => {
   );
 
   const handleFetchNext = useCallback(() => {
-    const fetchFilter = filterValue ? { title: filterValue } : null;
+    const fetchFilter = filterValue ? { titleStartsWith: filterValue } : null;
 
     fetchNext(fetchFilter);
   }, [fetchNext, filterValue]);
@@ -36,7 +36,7 @@ const Main: React.FC = () => {
   useEffect(() => {
     if (loading) return;
 
-    const fetchFilter = filterValue ? { title: filterValue } : null;
+    const fetchFilter = filterValue ? { titleStartsWith: filterValue } : null;
 
     refresh(fetchFilter);
   }, [filterValue, refresh]);

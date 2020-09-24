@@ -14,6 +14,6 @@ export interface IFetcherParams {
 }
 
 export interface IFetcherFilters {
-  title?: string;
-  name?: string;
+  titleStartsWith?: string;
+  nameStartsWith?: string;
 }
