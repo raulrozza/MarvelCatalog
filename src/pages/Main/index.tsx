@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 // Components
 import PageTitle from '../../components/PageTitle';
@@ -10,6 +10,10 @@ import { useFetcher } from '../../services/fetcher';
 import Loading from '../../components/Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+// Recoil
+import { useRecoilValue } from 'recoil';
+import filter from '../../atoms/filter';
+
 // Styles
 import { Container } from './styles';
 
@@ -18,7 +22,24 @@ import { IComic } from '../../interfaces/api/Comics';
 import ComicCard from './ComicCard';
 
 const Main: React.FC = () => {
-  const { loading, data, canFetch, fetchNext } = useFetcher<IComic>('comics');
+  const filterValue = useRecoilValue(filter);
+  const { loading, data, canFetch, fetchNext, refresh } = useFetcher<IComic>(
+    'comics',
+  );
+
+  const handleFetchNext = useCallback(() => {
+    const fetchFilter = filterValue ? { title: filterValue } : null;
+
+    fetchNext(fetchFilter);
+  }, [fetchNext, filterValue]);
+
+  useEffect(() => {
+    if (loading) return;
+
+    const fetchFilter = filterValue ? { title: filterValue } : null;
+
+    refresh(fetchFilter);
+  }, [filterValue, refresh]);
 
   return (
     <Container>
@@ -30,7 +51,7 @@ const Main: React.FC = () => {
         <InfiniteScroll
           hasMore={canFetch}
           loader={<Loading />}
-          next={fetchNext}
+          next={handleFetchNext}
           dataLength={data.length}
           style={{ overflow: 'none' }}
         >

@@ -4,28 +4,58 @@ import { useCallback, useEffect, useState } from 'react';
 import api from './api';
 
 // Types
-import { IFetchedData, IFetcherOptions } from '../interfaces/hooks/useFetcher';
-import { IMetadata, IResponseWrapper } from '../interfaces/api/DataWrappers';
+import {
+  IFetchedData,
+  IFetcherFilters,
+  IFetcherParams,
+} from '../interfaces/hooks/useFetcher';
+import {
+  IDataContainer,
+  IMetadata,
+  IResponseWrapper,
+} from '../interfaces/api/DataWrappers';
 
 // Utils
 import handleErrors from '../utils/handleErrors';
 
 export function useFetcher<T = unknown>(
   URL: string,
-  options: IFetcherOptions = {},
+  params: IFetcherParams = {},
 ): IFetchedData<T> {
   const [data, setData] = useState<T[]>([]);
   const [meta, setMeta] = useState<IMetadata>({} as IMetadata);
   const [loading, setLoading] = useState(true);
   const [canFetch, setCanFetch] = useState(true);
-  const [fetchingOptions] = useState(options);
+  const [fetchingParams] = useState(params);
 
-  const fetch = useCallback(
-    async (offset = 0) => {
+  const commitFetch = useCallback(
+    (metadata: IDataContainer<T[]>, append: boolean) => {
+      setMeta({
+        count: metadata.count,
+        limit: metadata.limit,
+        offset: metadata.offset,
+        total: metadata.total,
+      });
+
+      setCanFetch(metadata.offset + metadata.count < metadata.total);
+
+      if (append) setData(data => [...data, ...metadata.results]);
+      else setData(metadata.results);
+    },
+    [],
+  );
+
+  const fetchFromAPI: (
+    offset?: number,
+    requestFilters?: IFetcherFilters | null,
+    append?: boolean,
+  ) => Promise<void> = useCallback(
+    async (offset = 0, requestFilters = {}, append = true) => {
       try {
         const params = {
           offset,
-          ...fetchingOptions,
+          ...fetchingParams,
+          ...requestFilters,
         };
 
         const response = await api.get<IResponseWrapper<T[]>>(URL, {
@@ -34,16 +64,7 @@ export function useFetcher<T = unknown>(
 
         const metadata = response.data.data;
 
-        setMeta({
-          count: metadata.count,
-          limit: metadata.limit,
-          offset: metadata.offset,
-          total: metadata.total,
-        });
-
-        setCanFetch(metadata.offset + metadata.count < metadata.total);
-
-        setData(data => [...data, ...metadata.results]);
+        commitFetch(metadata, append);
       } catch (error) {
         handleErrors(error);
         setCanFetch(false);
@@ -51,20 +72,32 @@ export function useFetcher<T = unknown>(
         setLoading(false);
       }
     },
-    [URL, fetchingOptions],
+    [URL, fetchingParams, commitFetch],
   );
 
-  const fetchNext = () => {
-    const { total, count, offset } = meta;
+  const fetchNext = useCallback(
+    async (filters: IFetcherFilters | null = null) => {
+      const { total, count, offset } = meta;
 
-    const nextOffset = offset + count;
+      const nextOffset = offset + count;
 
-    if (nextOffset < total) fetch(nextOffset);
-  };
+      if (nextOffset < total) fetchFromAPI(nextOffset, filters);
+    },
+    [fetchFromAPI, meta],
+  );
+
+  const refresh = useCallback(
+    async (filters: IFetcherFilters | null = null) => {
+      setLoading(true);
+
+      fetchFromAPI(0, filters, false);
+    },
+    [fetchFromAPI],
+  );
 
   useEffect(() => {
-    fetch();
-  }, [fetch]);
+    fetchFromAPI();
+  }, [fetchFromAPI]);
 
   return {
     data,
@@ -72,5 +105,6 @@ export function useFetcher<T = unknown>(
     loading,
     canFetch,
     fetchNext,
+    refresh,
   };
 }

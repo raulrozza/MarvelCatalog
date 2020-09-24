@@ -5,9 +5,15 @@ export interface IFetchedData<T> {
   meta: IMetadata;
   loading: boolean;
   canFetch: boolean;
-  fetchNext: () => void;
+  fetchNext: (filters?: IFetcherFilters | null) => void;
+  refresh: (filters?: IFetcherFilters | null) => void;
 }
 
-export interface IFetcherOptions {
+export interface IFetcherParams {
   limit?: number;
+}
+
+export interface IFetcherFilters {
+  title?: string;
+  name?: string;
 }

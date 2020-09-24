@@ -9,6 +9,9 @@ import SearchBar from '../SearchBar';
 // Icons
 import { FaBars } from 'react-icons/fa';
 
+// Libs
+import { Link } from 'react-router-dom';
+
 // Styles
 import { Container, Logo, Navlink, TextLogo } from './styles';
 
@@ -19,11 +22,11 @@ const Navbar: React.FC = () => {
 
   return (
     <Container showMenu={menuToggle}>
-      <div className="img-container">
+      <Link to="/" className="img-container">
         <Logo src={marvelLogo} alt="Marvel's" />
 
         <TextLogo>Catalog</TextLogo>
-      </div>
+      </Link>
 
       <ul className="links-container">
         <SearchBar />
