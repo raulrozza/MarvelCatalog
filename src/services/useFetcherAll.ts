@@ -8,14 +8,18 @@ import { IFetchAllData } from '../interfaces/hooks/useFetchAll';
 
 export function useFetchAll<T = unknown>(URL: string): IFetchAllData<T> {
   const [loading, setLoading] = useState(true);
-  const { data, canFetch, fetchNext } = useFetcher<T>(URL, { limit: 100 });
+  const [data, setData] = useState<T[]>([]);
+  const { data: fetcherData, canFetch, fetchNext } = useFetcher<T>(URL, {
+    limit: 100,
+  });
 
   useEffect(() => {
-    console.log(data);
-
     if (canFetch) fetchNext();
-    else setLoading(false);
-  }, [canFetch, fetchNext]);
+    else {
+      setData(fetcherData);
+      setLoading(false);
+    }
+  }, [canFetch, fetcherData, fetchNext]);
 
   return {
     data,

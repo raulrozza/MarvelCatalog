@@ -1,7 +1,32 @@
-import { toast } from 'react-toastify';
+import { AxiosError } from 'axios';
 
-export default function (error: Error): void {
-  console.error(error);
+// Utils
+import displayErrorMessage from './displayErrorMessage';
+import {
+  getNotificationMessage,
+  notificationIds,
+} from '../config/notificationMessages';
 
-  toast.error('There was a problem fetching the data.');
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isAxiosError = (error: any): error is AxiosError =>
+  error.isAxiosError || false;
+
+export default function (error: Error | AxiosError): void {
+  if (!isAxiosError(error))
+    return displayErrorMessage(
+      getNotificationMessage(notificationIds.UNKNOWN),
+      notificationIds.UNKNOWN,
+    );
+
+  const response = error.response;
+
+  if (!response?.data)
+    return displayErrorMessage(
+      getNotificationMessage(notificationIds.UNKNOWN),
+      notificationIds.UNKNOWN,
+    );
+
+  const { code, message } = response.data;
+
+  displayErrorMessage(message, code);
 }
