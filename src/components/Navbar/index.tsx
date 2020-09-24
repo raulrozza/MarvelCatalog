@@ -48,6 +48,10 @@ const Navbar: React.FC = () => {
         <Navlink to="/characters" onClick={handleOnNavigate}>
           Characters
         </Navlink>
+
+        <Navlink to="/stats" onClick={handleOnNavigate}>
+          Stats
+        </Navlink>
       </ul>
 
       <div className="menu-toggle">

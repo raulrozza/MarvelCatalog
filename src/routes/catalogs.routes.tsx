@@ -11,6 +11,7 @@ const Main = lazy(() => import('../pages/Main'));
 const CharacterBio = lazy(() => import('../pages/CharacterBio'));
 const Characters = lazy(() => import('../pages/Characters'));
 const NovelDetails = lazy(() => import('../pages/NovelDetails'));
+const Stats = lazy(() => import('../pages/Stats'));
 
 const CatalogRoutes: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const CatalogRoutes: React.FC = () => {
         <Route path="/novels" exact component={Main} />
         <Route path="/characters/:id" exact component={CharacterBio} />
         <Route path="/characters" exact component={Characters} />
+        <Route path="/stats" exact component={Stats} />
         <Route path="*" exact>
           <Redirect to="/novels" />
         </Route>
