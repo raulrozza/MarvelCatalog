@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // Components
 import Loading from '../../components/Loading';
 
 // Hooks
-import { useFetchAll } from '../../services/useFetcherAll';
+import useFetchAndStore from '../../services/useFetchAndStore';
 
 // Styles
 import { Container } from './styles';
 
-// Utils
-import { loadData, saveData } from '../../utils/handleStorage';
+// Types
+import { ICharacter } from '../../interfaces/api/Characters';
 
 const Stats: React.FC = () => {
-  const { loading, data } = useFetchAll('characters');
-
-  useEffect(() => {
-    // saveJson('characters', { data: 'oi' });
-    loadData('characters').then(console.log).catch(console.error);
-  }, []);
+  const { loading, data } = useFetchAndStore<ICharacter>('characters');
 
   if (loading) return <Loading />;
 
