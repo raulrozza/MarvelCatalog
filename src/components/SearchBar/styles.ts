@@ -64,4 +64,35 @@ export const Container = styled.div<SearchBarContainerProps>`
       font-size: 2rem;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    input {
+      width: 16rem;
+      max-width: 16rem;
+
+      padding: 0 0.4rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-top: 0.8rem;
+
+    input {
+      margin-left: 0.8rem;
+    }
+
+    ${({ focused }) =>
+      focused &&
+      css`
+        button {
+          font-size: 1.8rem;
+        }
+      `}
+
+    &:hover {
+      button {
+        font-size: 1.8rem;
+      }
+    }
+  }
 `;
