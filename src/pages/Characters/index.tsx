@@ -7,7 +7,7 @@ import CharacterPortrait from './CharacterPortrait';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Hooks
-import { useFetcher } from '../../services/fetcher';
+import { useFetcher } from '../../services/useFetcher';
 
 // Recoil
 import { useRecoilValue } from 'recoil';

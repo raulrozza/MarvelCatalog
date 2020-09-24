@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 
 // Components
+import ComicCard from './ComicCard';
 import PageTitle from '../../components/PageTitle';
 
 // Hooks
-import { useFetcher } from '../../services/fetcher';
+import { useFetcher } from '../../services/useFetcher';
 
 // Libs
 import Loading from '../../components/Loading';
@@ -19,7 +20,6 @@ import { Container } from './styles';
 
 // Types
 import { IComic } from '../../interfaces/api/Comics';
-import ComicCard from './ComicCard';
 
 const Main: React.FC = () => {
   const filterValue = useRecoilValue(filter);

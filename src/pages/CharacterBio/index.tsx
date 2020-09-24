@@ -8,7 +8,7 @@ import Loading from '../../components/Loading';
 import PageTitle from '../../components/PageTitle';
 
 // Hooks
-import { useFetcher } from '../../services/fetcher';
+import { useFetcher } from '../../services/useFetcher';
 import { useParams } from 'react-router-dom';
 
 // Styles

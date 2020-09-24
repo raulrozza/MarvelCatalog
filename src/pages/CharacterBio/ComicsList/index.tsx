@@ -5,7 +5,7 @@ import Loading from '../../../components/Loading';
 import ComicImage from '../../../components/ComicImage';
 
 // Hooks
-import { useFetcher } from '../../../services/fetcher';
+import { useFetcher } from '../../../services/useFetcher';
 
 // Libs
 import { Link } from 'react-router-dom';

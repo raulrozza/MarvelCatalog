@@ -5,7 +5,7 @@ import CharacterImage from '../../../components/CharacterImage';
 import Loading from '../../../components/Loading';
 
 // Hooks
-import { useFetcher } from '../../../services/fetcher';
+import { useFetcher } from '../../../services/useFetcher';
 
 // Styles
 import { CharacterBox, Container } from './styles';
