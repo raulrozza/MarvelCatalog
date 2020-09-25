@@ -8,7 +8,7 @@ This application was created to consume the Marvel Developer's API. This API pro
 
 This app was developed using ReactJS and Typescript, bootstraped by [Create React App](https://github.com/facebook/create-react-app).
 
-By accessing the app, you can check Marvel's comics and characters, as well as detailed information about them, such as: the comics creators, what comics is a character in, and more.
+By accessing the app, you can check Marvel's comics and characters, as well as detailed information about them, such as: the comics creators, what comics is a character in, and more. You can also check the Stats page to discover the characters with most comic books ever, and the comics with most characters.
 
 The app is fully responsive, and you can add it to your home page as a PWA.
 
@@ -17,6 +17,7 @@ The app is fully responsive, and you can add it to your home page as a PWA.
 Some additional libraries were used to build the app's interfaces:
 
 - **Axios:** HTTP client used to connect with the Marvel API.
+- **React ChartJs:** A React wrapper for the ChartJS library, used for building charts and displaying data.
 - **React Helmet:** Library used to alter the page's head attributes.
 - **React Icons:** A library that provides various icons from multiple icon sources.
 - **React Infinite Scroll Component:** A nice library used to create the Infinite Scroll on the data listing pages.
