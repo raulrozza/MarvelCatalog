@@ -66,18 +66,12 @@ export const Container = styled.div<SearchBarContainerProps>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: 0.8rem;
+
     input {
       width: 16rem;
       max-width: 16rem;
 
-      padding: 0 0.4rem;
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-top: 0.8rem;
-
-    input {
       margin-left: 0.8rem;
     }
 

@@ -29,7 +29,7 @@ export const Container = styled.nav<NavbarContainerProps>`
     display: none;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     .menu-toggle {
       display: block;
 
@@ -98,7 +98,7 @@ export const Navlink = styled(Link)`
 
   margin: 0 0.8rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: 2.4rem;
     margin: 0.8rem;
   }
