@@ -13,19 +13,24 @@ export function useFetchAll<T = unknown>(
   const [fetchingEnabled, setFetchingEnabled] = useState(fetchOnInit);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<T[]>([]);
-  const { data: fetcherData, canFetch, fetchNext } = useFetcher<T>(URL, {
+  const {
+    data: fetcherData,
+    canFetch,
+    fetchNext,
+    loading: fetching,
+  } = useFetcher<T>(URL, {
     limit: 100,
   });
 
   useEffect(() => {
-    if (!fetchingEnabled) return;
+    if (fetching || !fetchingEnabled) return;
 
-    if (canFetch) fetchNext();
-    else {
-      setData(fetcherData);
-      setLoading(false);
-    }
-  }, [canFetch, fetcherData, fetchingEnabled, fetchNext]);
+    setData(fetcherData);
+
+    // The original condition is only canFetch. But since there is to many data in the endpoints, I must clamp it.
+    if (canFetch && fetcherData.length < 4000) fetchNext();
+    else setLoading(false);
+  }, [fetching, fetcherData, fetchingEnabled, canFetch]);
 
   return {
     data,

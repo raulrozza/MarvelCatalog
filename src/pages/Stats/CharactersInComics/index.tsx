@@ -10,16 +10,13 @@ import { withTheme } from 'styled-components';
 // Types
 import { CharactersInComicsProps } from './types';
 
-// Utils
-import { sortCharactersByComicLength } from '../utils';
-
 const CharactersInComics: React.FC<CharactersInComicsProps> = ({
   data,
   theme,
 }) => {
   const formattedData = useMemo(() => {
-    const orderedData = sortCharactersByComicLength(data);
-    const limitedData = orderedData.slice(0, 10);
+    const MAX_ELEMENTS = 10;
+    const limitedData = data.slice(0, MAX_ELEMENTS);
 
     return limitedData;
   }, [data]);
@@ -33,17 +30,17 @@ const CharactersInComics: React.FC<CharactersInComicsProps> = ({
 
     return [
       {
-        label: 'Characters',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
+        label: 'Comic books',
+        backgroundColor: theme.colors.primaryUltraTransparent,
+        borderColor: theme.colors.primaryTransparent,
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
+        hoverBackgroundColor: theme.colors.primaryExtraTransparent,
+        hoverBorderColor: theme.colors.primaryTransparent,
 
         data: displayData,
       },
     ];
-  }, [formattedData]);
+  }, [formattedData, theme]);
 
   return (
     <Container>
@@ -56,7 +53,7 @@ const CharactersInComics: React.FC<CharactersInComicsProps> = ({
           },
           title: {
             fontColor: theme.colors.textWhite,
-            text: 'Characters with most comic books',
+            text: 'Characters with most comic books presence',
             display: true,
             fontFamily: theme.fonts.special,
             fontSize: 20,

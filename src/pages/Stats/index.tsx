@@ -21,9 +21,11 @@ import { extractCharactersData, extractComicsData } from './utils';
 const Stats: React.FC = () => {
   const { loading: loadingCharacters, data: characters } = useFetchAndStore<
     ICharacter
-  >('characters');
+  >('characters', (a, b) => b.comics.available - a.comics.available, 10);
   const { loading: loadingComics, data: comics } = useFetchAndStore<IComic>(
     'comics',
+    (a, b) => b.characters.available - a.characters.available,
+    10,
   );
 
   if (loadingCharacters || loadingComics)
@@ -31,7 +33,7 @@ const Stats: React.FC = () => {
       <NoDataContainer>
         <h1>Organizing the data...</h1>
         <span>
-          First time here? This may take a while. Go grab a cup of coffe while
+          First time here? This may take a while. Go grab a cup of coffee while
           we set the page for you.
         </span>
         <LoadingData />

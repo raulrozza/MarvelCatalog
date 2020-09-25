@@ -9,6 +9,8 @@ import { IFetchedAndStoredData } from '../interfaces/hooks/useFetchAndStore';
 
 export default function useFetchAndStore<T = unknown>(
   URL: string,
+  orderMethod: (a: T, b: T) => number = () => 0,
+  limit = 20,
 ): IFetchedAndStoredData<T> {
   const [loading, setLoading] = useState(true);
   const [storageData, setStorageData] = useState<T[] | null>(null);
@@ -26,13 +28,17 @@ export default function useFetchAndStore<T = unknown>(
         } else toggleFetching(true);
       })
       .catch(console.error);
-  }, [URL, toggleFetching]);
+  }, [URL]);
 
   useEffect(() => {
-    if (!fetchLoading) {
-      setStorageData(data);
-      saveData(URL, data);
-    }
+    if (fetchLoading) return;
+
+    const orderedData = data.sort(orderMethod);
+    const slicedData = orderedData.slice(0, limit);
+
+    saveData(URL, slicedData);
+    setStorageData(slicedData);
+    setLoading(false);
   }, [fetchLoading, URL, data]);
 
   return {

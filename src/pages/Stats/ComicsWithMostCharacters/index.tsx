@@ -10,16 +10,13 @@ import { withTheme } from 'styled-components';
 // Types
 import { ComicsWithMostCharactersProps } from './types';
 
-// Utils
-import { sortComicsByCharacterCount } from '../utils';
-
 const ComicsWithMostCharacters: React.FC<ComicsWithMostCharactersProps> = ({
   data,
   theme,
 }) => {
   const formattedData = useMemo(() => {
-    const orderedData = sortComicsByCharacterCount(data);
-    const limitedData = orderedData.slice(0, 6);
+    const MAX_ELEMENTS = 6;
+    const limitedData = data.slice(0, MAX_ELEMENTS);
 
     return limitedData;
   }, [data]);
@@ -33,17 +30,17 @@ const ComicsWithMostCharacters: React.FC<ComicsWithMostCharactersProps> = ({
 
     return [
       {
-        label: 'Comics',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
+        label: 'Character Count',
+        backgroundColor: theme.colors.primaryUltraTransparent,
+        borderColor: theme.colors.primaryTransparent,
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
+        hoverBackgroundColor: theme.colors.primaryExtraTransparent,
+        hoverBorderColor: theme.colors.primaryTransparent,
 
         data: displayData,
       },
     ];
-  }, [formattedData]);
+  }, [formattedData, theme]);
 
   return (
     <Container>
@@ -56,7 +53,7 @@ const ComicsWithMostCharacters: React.FC<ComicsWithMostCharactersProps> = ({
           },
           title: {
             fontColor: theme.colors.textWhite,
-            text: 'Comics with most characters',
+            text: 'Comics with the most characters',
             display: true,
             fontFamily: theme.fonts.special,
             fontSize: 20,
@@ -65,6 +62,7 @@ const ComicsWithMostCharacters: React.FC<ComicsWithMostCharactersProps> = ({
             xAxes: [
               {
                 ticks: {
+                  display: false,
                   fontColor: theme.colors.textWhite,
                 },
                 gridLines: {

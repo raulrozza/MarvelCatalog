@@ -5,6 +5,8 @@ export default {
   black: '#000',
   primary: '#F0141E',
   primaryTransparent: '#F0141EAA',
+  primaryExtraTransparent: '#F0141E88',
+  primaryUltraTransparent: '#F0141E44',
   text: '#5C5C5C',
   textWhite: '#FFF',
   textLightWhite: '#ECECEC',

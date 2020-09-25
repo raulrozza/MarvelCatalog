@@ -23,12 +23,6 @@ export const extractCharactersData = (
   });
 };
 
-export const sortCharactersByComicLength = (
-  characters: IReducedCharacters[],
-): IReducedCharacters[] => {
-  return characters.sort((a, b) => b.comics - a.comics);
-};
-
 export const extractComicsData = (comics: IComic[]): IReducedComics[] => {
   return comics.map(comic => {
     return {
@@ -37,10 +31,4 @@ export const extractComicsData = (comics: IComic[]): IReducedComics[] => {
       characters: comic.characters.available,
     };
   });
-};
-
-export const sortComicsByCharacterCount = (
-  comics: IReducedComics[],
-): IReducedComics[] => {
-  return comics.sort((a, b) => b.characters - a.characters);
 };
