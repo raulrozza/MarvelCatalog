@@ -17,7 +17,7 @@ const DataNotFound: React.FC<DataNotFoundProps> = ({ itemName }) => {
     <Container>
       <PageTitle title="Not Found" />
       <span>
-        The ${itemName} you requested could not be found.
+        The {itemName} you requested could not be found.
         <br />
         <FaFrown />
       </span>

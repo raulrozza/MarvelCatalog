@@ -14,6 +14,7 @@ import { useRecoilValue } from 'recoil';
 import filter from '../../atoms/filter';
 
 // Styles
+import NoDataContainer from '../../styles/NoDataContainer';
 import { Container } from './styles';
 
 // Types
@@ -53,11 +54,22 @@ const Characters: React.FC = () => {
           dataLength={data.length}
           style={{ overflow: 'none' }}
         >
-          <div className="character-list">
-            {data.map(character => (
-              <CharacterPortrait key={character.id} character={character} />
-            ))}
-          </div>
+          {data.length > 0 && (
+            <div className="character-list">
+              {data.map(character => (
+                <CharacterPortrait key={character.id} character={character} />
+              ))}
+            </div>
+          )}
+
+          {data.length === 0 && (
+            <NoDataContainer>
+              <h1>Unavailable</h1>
+              <span>
+                Could not display characters now. Please, try again later.
+              </span>
+            </NoDataContainer>
+          )}
         </InfiniteScroll>
       )}
     </Container>

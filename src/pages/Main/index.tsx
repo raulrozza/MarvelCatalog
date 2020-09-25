@@ -16,6 +16,7 @@ import { useRecoilValue } from 'recoil';
 import filter from '../../atoms/filter';
 
 // Styles
+import NoDataContainer from '../../styles/NoDataContainer';
 import { Container } from './styles';
 
 // Types
@@ -60,6 +61,15 @@ const Main: React.FC = () => {
               <ComicCard key={comic.id} comic={comic} />
             ))}
           </div>
+
+          {data.length === 0 && (
+            <NoDataContainer>
+              <h1>Unavailable</h1>
+              <span>
+                Could not display comics now. Please, try again later.
+              </span>
+            </NoDataContainer>
+          )}
         </InfiniteScroll>
       )}
     </Container>

@@ -2,13 +2,13 @@ import React from 'react';
 
 // Components
 import CharactersInComics from './CharactersInComics';
-import Loading from '../../components/Loading';
 
 // Hooks
 import useFetchAndStore from '../../services/useFetchAndStore';
 
 // Styles
-import { Container } from './styles';
+import NoDataContainer from '../../styles/NoDataContainer';
+import { Container, LoadingData } from './styles';
 
 // Types
 import { ICharacter } from '../../interfaces/api/Characters';
@@ -19,7 +19,17 @@ import { extractCharactersData } from './utils';
 const Stats: React.FC = () => {
   const { loading, data } = useFetchAndStore<ICharacter>('characters');
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <NoDataContainer>
+        <h1>Organizing the data...</h1>
+        <span>
+          First time here? This may take a while. Go grab a cup of coffe while
+          we set the page for you.
+        </span>
+        <LoadingData />
+      </NoDataContainer>
+    );
 
   return (
     <Container>

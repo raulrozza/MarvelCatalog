@@ -6,9 +6,12 @@ import ReactLoading from 'react-loading';
 // Styles
 import { Container } from './styles';
 
-const Loading: React.FC = () => {
+// Types
+import { LoadingProps } from './types';
+
+const Loading: React.FC<LoadingProps> = ({ style, className }) => {
   return (
-    <Container>
+    <Container style={style} className={className}>
       <ReactLoading type="cylon" />
     </Container>
   );
