@@ -26,3 +26,23 @@ Some additional libraries were used to build the app's interfaces:
 - **React Toastify:** A great library for displaying toast messages. Used to return feedback to user on connection errors.
 - **Recoil:** A state management library for React. Used to enable communication between the SearchBar component and the listing pages.
 - **Styled Components:** Great library for component styling, enabling the use of JavaScript inside CSS syntax.
+
+## Testing
+
+You can easily test this app in your machine by cloning this repository. Then, on the project folder, run
+
+`npm install`
+
+or
+
+`yarn`
+
+to install all dependencies.
+
+You will also need to set your Marvel API public key as an environment variable.
+
+To do this, simply create a `.env` file on the root folder, with the following line:
+
+`REACT_APP_PUBLIC_KEY = YOUR_KEY`
+
+After everything is set, you can run `npm start` to run the app on your localhost.
