@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import CharactersInComics from './CharactersInComics';
+import ComicsWithMostCharacters from './ComicsWithMostCharacters';
 
 // Hooks
 import useFetchAndStore from '../../services/useFetchAndStore';
@@ -11,15 +12,21 @@ import NoDataContainer from '../../styles/NoDataContainer';
 import { Container, LoadingData } from './styles';
 
 // Types
+import { IComic } from '../../interfaces/api/Comics';
 import { ICharacter } from '../../interfaces/api/Characters';
 
 // Utils
-import { extractCharactersData } from './utils';
+import { extractCharactersData, extractComicsData } from './utils';
 
 const Stats: React.FC = () => {
-  const { loading, data } = useFetchAndStore<ICharacter>('characters');
+  const { loading: loadingCharacters, data: characters } = useFetchAndStore<
+    ICharacter
+  >('characters');
+  const { loading: loadingComics, data: comics } = useFetchAndStore<IComic>(
+    'comics',
+  );
 
-  if (loading)
+  if (loadingCharacters || loadingComics)
     return (
       <NoDataContainer>
         <h1>Organizing the data...</h1>
@@ -33,7 +40,8 @@ const Stats: React.FC = () => {
 
   return (
     <Container>
-      <CharactersInComics data={extractCharactersData(data || [])} />
+      <CharactersInComics data={extractCharactersData(characters || [])} />
+      <ComicsWithMostCharacters data={extractComicsData(comics || [])} />
     </Container>
   );
 };

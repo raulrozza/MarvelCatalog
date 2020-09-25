@@ -11,4 +11,7 @@ export interface IComic {
   thumbnail: IImage;
   images: IImage[];
   creators: ICreators;
+  characters: {
+    available: number;
+  };
 }
